@@ -1,12 +1,14 @@
-package org.example.b_board;
+package org.example.b_board.contents;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.example.b_board.ContentRepository;
 import org.example.b_board.entity.Content;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Profile;
@@ -19,6 +21,7 @@ import java.time.LocalDateTime;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -28,6 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @ActiveProfiles("test")
+@AutoConfigureRestDocs
 class ContentControllerTest {
 
     @Autowired
@@ -45,6 +49,7 @@ class ContentControllerTest {
         Content content  = Content.builder()
                 .title("first write")
                 .writer("jaehoon")
+                .article("This is first content")
                 .First_published_date(LocalDate.of(2020,4,5))
                 .Last_update_date(LocalDate.of(2023,4,5))
                 .build();
@@ -59,6 +64,7 @@ class ContentControllerTest {
                 .andExpect(jsonPath("title").value("first write"))
                 .andExpect(jsonPath("writer").exists())
                 .andExpect(jsonPath("_links.self").exists())
+                .andDo(document("create-content"))
         ;
 
     }

@@ -1,5 +1,6 @@
-package org.example.b_board;
+package org.example.b_board.entity;
 
+import org.example.b_board.ContentRepository;
 import org.example.b_board.entity.Content;
 import org.example.b_board.entity.ContentResource;
 import org.springframework.beans.factory.annotation.Autowired;

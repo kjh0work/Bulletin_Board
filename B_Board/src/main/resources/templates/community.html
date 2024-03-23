@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::head">
+    <link rel="stylesheet" href="/css/community.css">
+    <title>자유 게시판</title>
+</head>
+<body>
+<div class="container1">
+    <header th:replace="fragments::header"></header>
+
+    <div class="section">
+        <div th:replace="fragments::sidebar"></div>
+        <div class="container my-5">
+            <!-- 검색창 -->
+            <div class="row">
+                <div class="col-12">
+                    <input class="form-control mb-3" type="search" placeholder="검색..." aria-label="검색">
+                </div>
+            </div>
+            <!-- 글 목록 -->
+            <div class="row">
+                <div class="col-12">
+                    <ul class="list-group mb-3">
+                        <!-- 동적으로 게시글 목록이 들어갈 위치 -->
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            게시글 제목 1
+                            <span class="badge bg-primary rounded-pill">14</span>
+                        </li>
+                        <!-- 여러 게시글 항목들이 추가될 수 있습니다 -->
+                    </ul>
+                </div>
+            </div>
+            <!-- 페이지네이션 -->
+            <div class="row">
+                <div class="col-12 d-flex justify-content-between align-items-center">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                    <a th:href="@{/board/writing}" class="btn btn-primary btn-lg" tabindex="-1" role="button" >글쓰기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer th:replace="fragments::footer"></footer>
+</div>
+</body>
+</html>

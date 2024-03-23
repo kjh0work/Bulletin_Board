@@ -21,6 +21,8 @@ public class Content extends RepresentationModel<Content> {
 
     private String title;
     private String writer;
+
+    private String article;
     private LocalDate First_published_date;
     private LocalDate Last_update_date;
 
